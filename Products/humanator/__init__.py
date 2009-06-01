@@ -2,7 +2,7 @@
 """
 
 from zope.i18nmessageid import MessageFactory
-from Products.todo import config
+from Products.humanator import config
 
 from Products.Archetypes import atapi
 from Products.CMFCore import utils

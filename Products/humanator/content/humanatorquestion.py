@@ -1,4 +1,4 @@
-"""Definition of the Humanator item content type
+"""Definition of the Humanator question content type
 """
 
 from zope.interface import implements, directlyProvides
@@ -7,22 +7,19 @@ from Products.Archetypes import atapi
 from Products.ATContentTypes.content import folder
 from Products.ATContentTypes.content import schemata
 
-from Products.humanator import todoMessageFactory as _
+from Products.humanator import humanatorMessageFactory as _
 from Products.humanator.interfaces import IHumanatorquestion
 from Products.humanator.config import PROJECTNAME
 
-HumanatoritemSchema = folder.ATFolderSchema.copy() + atapi.Schema((
+HumanatorquestionSchema = folder.ATFolderSchema.copy() + atapi.Schema((
 
 
-    atapi.TextField(
-        name='notes',
+    atapi.StringField(
+        name='answer',
         storage = atapi.AnnotationStorage(),
-        required=False,
-        #searchable=1,
-        #default='',
-        #schemata ='default',
+        required=True,
         widget=atapi.RichWidget(
-            description=_(u"Notes for this todo item."),
+            description=_(u"Notes for this todo question."),
         ),
     ),
 
@@ -31,22 +28,22 @@ HumanatoritemSchema = folder.ATFolderSchema.copy() + atapi.Schema((
 # Set storage on fields copied from ATContentTypeSchema, making sure
 # they work well with the python bridge properties.
 
-HumanatoritemSchema['title'].storage = atapi.AnnotationStorage()
-HumanatoritemSchema['title'].widget.label = 'Question'
-HumanatoritemSchema['description'].storage = atapi.AnnotationStorage()
-HumanatoritemSchema['description'].widget.visible = {'edit': 'hidden', 'view': 'invisible'}
+HumanatorquestionSchema['title'].storage = atapi.AnnotationStorage()
+HumanatorquestionSchema['title'].widget.label = 'Question'
+HumanatorquestionSchema['description'].storage = atapi.AnnotationStorage()
+HumanatorquestionSchema['description'].widget.visible = {'edit': 'hidden', 'view': 'invisible'}
 
-schemata.finalizeATCTSchema(HumanatoritemSchema, moveDiscussion=False)
+schemata.finalizeATCTSchema(HumanatorquestionSchema, moveDiscussion=False)
 
-class Humanatoritem(folder.ATFolder):
-    """Description of the Example Type"""
-    implements(IHumanatoritem)
+class Humanatorquestion(folder.ATFolder):
+    """Description of the Humanator questionSchema Type"""
+    implements(IHumanatorquestion)
 
-    portal_type = "Humanator item"
-    meta_type = "Humanator item"
-    schema = HumanatoritemSchema
+    portal_type = "Humanator question"
+    meta_type = "Humanator question"
+    schema = HumanatorquestionSchema
 
     title = atapi.ATFieldProperty('title')
     description = atapi.ATFieldProperty('description')
 
-atapi.registerType(Humanatoritem, PROJECTNAME)
+atapi.registerType(Humanatorquestion, PROJECTNAME)

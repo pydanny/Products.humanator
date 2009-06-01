@@ -1,4 +1,4 @@
-"""Definition of the Todo folder content type
+"""Definition of the humanator folder content type
 """
 
 from zope.interface import implements, directlyProvides
@@ -28,12 +28,12 @@ HumanatorfolderSchema['description'].widget.description = 'A short summary of th
 schemata.finalizeATCTSchema(HumanatorfolderSchema, folderish=True, moveDiscussion=False)
 
 class Humanatorfolder(folder.ATFolder):
-    """A folder that contains todo list items"""
+    """A folder that contains humanator questions"""
     implements(IHumanatorfolder)
 
     portal_type = "Humanator folder"
     meta_type = "Humanator folder"
-    schema = Humanator
+    schema = HumanatorfolderSchema
 
     title = atapi.ATFieldProperty('title')
     description = atapi.ATFieldProperty('description')
