@@ -1,0 +1,14 @@
+README.txt
+setup.cfg
+setup.py
+Products/__init__.py
+Products.humanator.egg-info/PKG-INFO
+Products.humanator.egg-info/SOURCES.txt
+Products.humanator.egg-info/dependency_links.txt
+Products.humanator.egg-info/entry_points.txt
+Products.humanator.egg-info/namespace_packages.txt
+Products.humanator.egg-info/not-zip-safe
+Products.humanator.egg-info/requires.txt
+Products.humanator.egg-info/top_level.txt
+Products/humanator/__init__.py
+Products/humanator/tests.py

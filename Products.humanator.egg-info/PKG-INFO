@@ -1,0 +1,27 @@
+Metadata-Version: 1.0
+Name: Products.humanator
+Version: 1.0dev
+Summary: CAPTCHA alternative for Plone 3.x
+Home-page: http://github.com/pydanny/Products.humanator
+Author: Daniel Greenfeld
+Author-email: pydanny@gmail.com
+License: BSD
+Description: Introduction
+        ============
+        
+        
+        
+        Changelog
+        =========
+        
+        1.0 - Unreleased
+        ----------------
+        
+        * Initial release
+        
+        
+Keywords: plone
+Platform: UNKNOWN
+Classifier: Framework :: Plone
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
