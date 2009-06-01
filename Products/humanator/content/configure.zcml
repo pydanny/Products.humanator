@@ -6,29 +6,29 @@
     <!-- configure your content components here -->
 
     <!-- -*- extra stuff goes here -*- -->
-    <class class=".humanator.Todoitem">
+    <class class=".humanatorfolder.Humanatorfolder">
 
         <require
             permission="zope2.View"
-            interface="..interfaces.ITodoitem"
+            interface="..interfaces.IHumanatorfolder"
             />
 
         <require
             permission="cmf.ModifyPortalContent"
-            set_schema="..interfaces.ITodoitem"
+            set_schema="..interfaces.IHumanatorfolder"
             />
 
     </class>
-    <class class=".todofolder.Todofolder">
+    <class class=".humanatorquestion.Humanatorquestion">
 
         <require
             permission="zope2.View"
-            interface="..interfaces.ITodofolder"
+            interface="..interfaces.IHumanatorquestion"
             />
 
         <require
             permission="cmf.ModifyPortalContent"
-            set_schema="..interfaces.ITodofolder"
+            set_schema="..interfaces.IHumanatorquestion"
             />
 
     </class>
