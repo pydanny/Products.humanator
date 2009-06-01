@@ -1,0 +1,36 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    i18n_domain="Products.humanator">
+
+    <!-- configure your content components here -->
+
+    <!-- -*- extra stuff goes here -*- -->
+    <class class=".humanator.Todoitem">
+
+        <require
+            permission="zope2.View"
+            interface="..interfaces.ITodoitem"
+            />
+
+        <require
+            permission="cmf.ModifyPortalContent"
+            set_schema="..interfaces.ITodoitem"
+            />
+
+    </class>
+    <class class=".todofolder.Todofolder">
+
+        <require
+            permission="zope2.View"
+            interface="..interfaces.ITodofolder"
+            />
+
+        <require
+            permission="cmf.ModifyPortalContent"
+            set_schema="..interfaces.ITodofolder"
+            />
+
+    </class>
+
+</configure>
