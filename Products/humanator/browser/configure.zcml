@@ -6,6 +6,19 @@
     <include package="plone.app.contentmenu" />
 
     <!-- -*- extra stuff goes here -*- -->
+    <browser:page
+        for="..interfaces.IHumanatorfolder"
+        name="humanatorfolder_view"
+        class=".humanatorfolder.Humanator_folderView"
+        permission="zope2.View"
+        />
+
+      <browser:page
+          for="..interfaces.IHumanatorquestion"
+          name="humanatorquestion_view"
+          class=".humanatorquestion.Humanator_questionView"
+          permission="zope2.View"
+          />
 
 
 </configure>

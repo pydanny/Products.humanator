@@ -1,29 +1,25 @@
 <?xml version="1.0"?>
-<object name="Humanator item"
+<object name="Todo item"
    meta_type="Factory-based Type Information with dynamic views"
    i18n:domain="Products.humanator" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
   <property name="title" i18n:translate="">Humanator question</property>
   <property name="description"
-    i18n:translate="">Humanator question</property>
+    i18n:translate="">A Question for humanator</property>
   <property name="content_meta_type">Humanator question</property>
   <property name="content_icon">document_icon.gif</property>
   <property name="product">humanator</property>
-  <property name="factory">addHumanatoritem</property>
+  <property name="factory">addHumanatorquestion</property>
   <property name="immediate_view">atct_edit</property>
   <property name="global_allow">False</property>
-  <property name="filter_content_types">True</property>
-  <property name="allowed_content_types">
-    <element value="Humanator question"/>
-  </property>
+  <property name="filter_content_types">False</property>
   <property name="allow_discussion">False</property>
-  <property name="default_view">humanatorquestion_view</property>
+  <property name="default_view">base_view</property>
   <property name="view_methods">
     <element value="base_view" />
   </property>
   <alias from="(Default)" to="(dynamic view)" />
   <alias from="edit" to="atct_edit" />
   <alias from="sharing" to="@@sharing" />
-  <alias from="humanatorquestion_view" to="@@humanatorquestion_view"/>
   <alias from="view" to="(selected layout)" />
   <action title="View" action_id="view" category="object" condition_expr=""
     url_expr="string:${object_url}/" visible="True">

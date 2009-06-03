@@ -11,14 +11,14 @@ from Products.humanator import humanatorMessageFactory as _
 from Products.humanator.interfaces import IHumanatorquestion
 from Products.humanator.config import PROJECTNAME
 
-HumanatorquestionSchema = folder.ATFolderSchema.copy() + atapi.Schema((
+HumanatorquestionSchema = document.ATDocumentSchema.copy() + atapi.Schema((
 
 
     atapi.StringField(
         name='answer',
         storage = atapi.AnnotationStorage(),
         required=True,
-        widget=atapi.RichWidget(
+        widget=atapi.StringWidget(
             description=_(u"Notes for this todo question."),
         ),
     ),
