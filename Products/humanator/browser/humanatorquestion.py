@@ -10,7 +10,7 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from plone.app.content.browser.foldercontents import FolderContentsView
 
-class Humanator_folderView(FolderContentsView):
+class Humanator_questionView(FolderContentsView):
     """Default view of a Todo folder
     """
 

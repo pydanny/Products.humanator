@@ -7,14 +7,35 @@
       i18n:domain="Products.todo">
 <body>
 
-<metal:css fill-slot="css_slot">
-</metal:css>
 
 <metal:main fill-slot="main">
 
     <tal:main-macro metal:define-macro="main">
 
-        blah balh
+        <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+        <h1 class="documentFirstHeading">
+            <span metal:use-macro="python:context.widget('title', mode='view')" />
+        </h1>
+
+        <div tal:replace="structure provider:plone.belowcontenttitle" />
+
+        <p class="documentDescription" tal:condition="exists:here/widget">
+            <metal:field use-macro="python:here.widget('description', mode='view')">
+                Description
+            </metal:field>
+        </p>
+
+        <a href=""
+           tal:attributes="href string:createObject?type_name=Humanator+question"
+           i18n:translate="add_humanator_question">
+            Add Humanator Question
+        </a>
+
+        <ol>
+            <div tal:content="structure view/folder_listing" />
+        </ol>
+
     </tal:main-macro>
 
 </metal:main>

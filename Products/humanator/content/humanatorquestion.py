@@ -4,14 +4,14 @@
 from zope.interface import implements, directlyProvides
 
 from Products.Archetypes import atapi
-from Products.ATContentTypes.content import document
+from Products.ATContentTypes.content import folder
 from Products.ATContentTypes.content import schemata
 
 from Products.humanator import humanatorMessageFactory as _
 from Products.humanator.interfaces import IHumanatorquestion
 from Products.humanator.config import PROJECTNAME
 
-HumanatorquestionSchema = document.ATDocumentSchema.copy() + atapi.Schema((
+HumanatorquestionSchema = folder.ATFolderSchema.copy() + atapi.Schema((
 
 
     atapi.StringField(
@@ -35,7 +35,7 @@ HumanatorquestionSchema['description'].widget.visible = {'edit': 'hidden', 'view
 
 schemata.finalizeATCTSchema(HumanatorquestionSchema, moveDiscussion=False)
 
-class Humanatorquestion(document.ATDocument):
+class Humanatorquestion(folder.ATFolder):
     """Description of the Humanator questionSchema Type"""
     implements(IHumanatorquestion)
 
