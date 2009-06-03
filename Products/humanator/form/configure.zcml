@@ -1,0 +1,13 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser">
+
+  <view
+      type="zope.publisher.interfaces.browser.IBrowserRequest"
+      for="collective.captcha.form.interfaces.IHumanator"
+      provides="zope.app.form.interfaces.IInputWidget"
+      factory=".widget.HumanatorWidget"
+      permission="zope.Public"
+      />
+
+</configure>
