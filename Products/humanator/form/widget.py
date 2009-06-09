@@ -12,7 +12,7 @@ _ = MessageFactory('Products.humanator')
 
 class HumanatorWidget(ASCIIWidget):
     def __call__(self):
-        captcha = getMultiAdapter((aq_inner(self.context.context), self.request), name='humanator')
+        humanator = getMultiAdapter((aq_inner(self.context.context), self.request), name='humanator')
         kwargs = {'type': self.type,
                   'name': self.name,
                   'id': self.name,
@@ -23,16 +23,11 @@ class HumanatorWidget(ASCIIWidget):
         if self.displayMaxWidth:
             kwargs['maxlength'] = self.displayMaxWidth # TODO This is untested.
 
-        return u"""<div class="captchaImage">%s</div>
-<div class="captchaAudio"><a href="%s" target="_blank">%s</a></div>
-%s""" % (captcha.image_tag(),
-         captcha.audio_url(),
-         _(u"Listen to audio for this captcha"),
-         renderElement(self.tag, **kwargs))
+        return u"""<p class="humanatorQuestion">%s</p>""" % (humanator.question()), renderElement(self.tag, **kwargs)
          
     def _toFieldValue(self, input):
         # Verify the user input against the captcha
-        captcha = getMultiAdapter((aq_inner(self.context.context), self.request), name='captcha')
-        if not captcha.verify(input):
+        humanator = getMultiAdapter((aq_inner(self.context.context), self.request), name='humanator')
+        if not humanator.verify(input):
             raise ConversionError(_(u'The code you entered was wrong, please enter the new one.'))
-        return super(CaptchaWidget, self)._toFieldValue(input)
+        return super(HumanatorWidget, self)._toFieldValue(input)

@@ -1,0 +1,18 @@
+--------------------------
+Humanator in a formlib form
+--------------------------
+
+Just add humanator field to your schema, and away you go:
+
+  >>> from zope.interface import Interface
+  >>> from Products.humanator.form import Humanator
+  >>> class HumanatorSchema(Interface):
+  ...     humanator = Humanator(
+  ...         title=_(u'Type the code'),
+  ...         description=_(u'Type the code from the picture shown below or '
+  ...                       u'from the audio.'))
+
+and formlib will take care of the rest. The widget associated with this field 
+will render the captcha and verify the user input automatically.
+
+TODO: turn this into a proper doctest testing the widget.
