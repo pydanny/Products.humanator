@@ -6,6 +6,7 @@ import sha
 import string
 import sys
 import time
+from sys import stderr
 
 from Acquisition import aq_inner
 from App.config import getConfiguration
@@ -75,15 +76,15 @@ class Humanator(BrowserView):
         return words
         
     def question(self):
+
         pc = getToolByName(self.context, 'portal_catalog')
         results = pc(portal_type='Humanator question', review_state='published')
         if results:
             result = random.sample(results,1)[0]
             result = result.getObject()
         else:
-            raise ValueError
-        
-        return result
+            raise ValueError             
+        return result.Title()
 
     def verify(self, input):
         result = False

@@ -10,6 +10,8 @@ from Acquisition import aq_inner
 _ = MessageFactory('Products.humanator')
 
 
+
+
 class HumanatorWidget(ASCIIWidget):
     def __call__(self):
         humanator = getMultiAdapter((aq_inner(self.context.context), self.request), name='humanator')
@@ -23,7 +25,10 @@ class HumanatorWidget(ASCIIWidget):
         if self.displayMaxWidth:
             kwargs['maxlength'] = self.displayMaxWidth # TODO This is untested.
 
-        return u"""<p class="humanatorQuestion">%s</p>""" % (humanator.question()), renderElement(self.tag, **kwargs)
+        text = u"""<div class="humanatorQuestion">%(question)s</p>
+        %(element)s
+        """% {'question':humanator.question(), 'element':renderElement(self.tag, **kwargs)}
+        return text
          
     def _toFieldValue(self, input):
         # Verify the user input against the captcha
