@@ -19,6 +19,14 @@
           class=".humanatorquestion.Humanator_questionView"
           permission="zope2.View"
           />
+          
+  <browser:view
+      name="humanator"
+      for="*"
+      permission="zope2.Public"
+      provides=".interfaces.IHumanatorView"
+      class=".humanator.Humanator"
+      />          
 
 
 </configure>

@@ -4,7 +4,7 @@
 
   <view
       type="zope.publisher.interfaces.browser.IBrowserRequest"
-      for="collective.captcha.form.interfaces.IHumanator"
+      for="Products.humanator.form.interfaces.IHumanator"
       provides="zope.app.form.interfaces.IInputWidget"
       factory=".widget.HumanatorWidget"
       permission="zope.Public"
