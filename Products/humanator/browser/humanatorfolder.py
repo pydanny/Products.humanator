@@ -14,7 +14,7 @@ class Humanator_folderView(FolderContentsView):
     """Default view of a Humanator folder
     """
 
-    __call__ = ViewPageTemplateFile('humanatorfolder.pt')
+    __call__ = ViewPageTemplateFile('humanatorfolder_view.pt')
 
 
     def folder_listing(self):

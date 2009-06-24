@@ -14,4 +14,4 @@ class Humanator_questionView(FolderContentsView):
     """Default view of a Todo folder
     """
 
-    __call__ = ViewPageTemplateFile('humanatorquestion.pt')
+    __call__ = ViewPageTemplateFile('humanatorquestion_view.pt')
