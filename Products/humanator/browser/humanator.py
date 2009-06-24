@@ -1,4 +1,9 @@
-# Zope Captcha generation
+# question and verifier generation
+# TODO: replace ValueErrors with custom errors
+
+from sys import stderr
+import md5
+
 import os.path
 import random
 import re
@@ -6,7 +11,7 @@ import sha
 import string
 import sys
 import time
-from sys import stderr
+
 
 from Acquisition import aq_inner
 from App.config import getConfiguration
@@ -54,39 +59,45 @@ class Humanator(BrowserView):
                 del resp.cookies[COOKIE_ID]
             resp.setCookie(COOKIE_ID, id, path='/')
 
-    def _generate_words(self):
-        """Create words for the current session
-
-        We generate one for the current 5 minutes, plus one for the previous
-        5. This way captcha sessions have a livespan of 10 minutes at most.
-
-        """
-        session = self.request[COOKIE_ID]
-        nowish = _TEST_TIME or int(time.time() / 300)
-        seeds = [sha.new(SEKRIT + session + str(nowish)).digest(),
-                 sha.new(SEKRIT + session + str(nowish - 5)).digest()]
-
-        words = []
-        for seed in seeds:
-            word = []
-            for i in range(WORDLENGTH):
-                index = ord(seed[i]) % len(CHARS)
-                word.append(CHARS[index])
-            words.append(''.join(word))
-        return words
         
     def question(self):
-
         pc = getToolByName(self.context, 'portal_catalog')
         results = pc(portal_type='Humanator question', review_state='published')
         if results:
-            result = random.sample(results,1)[0]
-            result = result.getObject()
+            question = random.sample(results,1)[0]
+            question = question.getObject()
         else:
-            raise ValueError             
-        return result.Title()
+            raise ValueError     
+            
+
+        return question
 
     def verify(self, input):
+
+        # fetch the question
+        pc = getToolByName(self.context, 'portal_catalog')
+        results = pc(portal_type='Humanator question', review_state='published', id = self.request.form['question_id'])
+        if results:
+            question = results[0].getObject()
+        else:
+            # replace this value error with something more specific            
+            raise ValueError
+            
+        # Is this a valid response or is there a faked response attempted?   
+        if md5.new(question.Title()).hexdigest() != self.request.form['id_check']:
+            # replace this value error with something more specific
+            raise ValueError
+
+        # now lets see if the input equals the answer
+        if input == question.getAnswer():
+            return True
+            
+        
+        return False
+                
+        
+        
+    def OLD_verify(self, input):
         result = False
         try:
             for word in self._generate_words():

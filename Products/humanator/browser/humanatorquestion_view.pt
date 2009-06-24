@@ -7,11 +7,12 @@
       i18n:domain="Products.humanator">
 <body>
 
+
 <metal:main fill-slot="main">
 
     <tal:main-macro metal:define-macro="main">
 
-        Folder
+        blah balh
     </tal:main-macro>
 
 </metal:main>
