@@ -40,7 +40,7 @@ class HumanatorWidget(ASCIIWidget):
         return text
          
     def _toFieldValue(self, input):
-        # Verify the user input against the captcha
+        # Verify the user input against the question
         humanator = getMultiAdapter((aq_inner(self.context.context), self.request), name='humanator')
         if not humanator.verify(input):
             raise ConversionError(_(u'The answer you entered was wrong, please enter the new one.'))

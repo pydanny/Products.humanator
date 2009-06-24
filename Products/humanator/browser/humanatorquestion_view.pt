@@ -7,17 +7,11 @@
       i18n:domain="Products.humanator">
 <body>
 
-
-<metal:main fill-slot="main">
-
-    <tal:main-macro metal:define-macro="main">
-
-        blah balh
-    </tal:main-macro>
-
-</metal:main>
+        <h1>blah</h1>
+        <p>
+            <strong>Answer:</strong>
+            <tal:answer replace="context/getAnswer" />
+        </p>
 
 </body>
 </html>
-
-
