@@ -12,7 +12,6 @@ Just add humanator field to your schema, and away you go:
   ...         description=_(u'Type the code from the picture shown below or '
   ...                       u'from the audio.'))
 
-and formlib will take care of the rest. The widget associated with this field 
-will render the captcha and verify the user input automatically.
+
 
 TODO: turn this into a proper doctest testing the widget.
