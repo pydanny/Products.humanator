@@ -14,6 +14,15 @@ from Products.Five import BrowserView
 from Products.CMFCore.utils import getToolByName
 from zope.interface import implements
 
+class NoHumanatorQuestionsError(Exception):
+    """ Raised when no humanator questions have been created/published """
+
+class HumanatorQuestionsDoesNotExist(Exception):
+    """ Raised when no humanator question by that id is requested """
+
+class BogusQuestionCheckError(Exception):
+    """ Raised when XSS attempts are made."""
+
 
 
 class Humanator(BrowserView):
@@ -30,8 +39,7 @@ class Humanator(BrowserView):
             question = random.sample(results,1)[0]
             question = question.getObject()
         else:
-            raise ValueError     
-            
+            raise NoHumanatorQuestionsError
 
         return question
 
@@ -44,12 +52,12 @@ class Humanator(BrowserView):
             question = results[0].getObject()
         else:
             # replace this value error with something more specific            
-            raise ValueError
+            raise HumanatorQuestionsDoesNotExist
             
         # Is this a valid response or is there a faked response attempted?   
         if md5.new(question.Title()).hexdigest() != self.request.form['id_check']:
             # replace this value error with something more specific
-            raise ValueError
+            raise BogusQuestionCheckError
 
         # now lets see if the input equals the answer
         if input == question.getAnswer():
