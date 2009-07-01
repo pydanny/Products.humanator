@@ -1,6 +1,6 @@
 Introduction
 ============
-has a number of disadvantages such as usability and possibly the false sense of security. As white papers documenting the easy cracking of CAPTCHA become more prevalent, the security issues have been growing in concern.
+CAPTCHA has a number of disadvantages such as usability and possibly the false sense of security. As white papers documenting the easy cracking of CAPTCHA become more prevalent, the security issues have been growing in concern.
 
 Products.humanator relies on a different method of determining if the user is human or not. Rather than rely on images (and audio), the humanator widget asks the user questions such as::
 
