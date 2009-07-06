@@ -1,4 +1,6 @@
 include Products/humanator/browser/configure.zcml
+include Products/humanator/browser/humanatorfolder_view.pt
+include Products/humanator/browser/humanatorquestion_view.pt
 include Products/humanator/configure.zcml
 include Products/humanator/content/configure.zcml
 include Products/humanator/form/configure.zcml
