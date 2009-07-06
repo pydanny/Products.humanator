@@ -1,1 +1,7 @@
+include Products/humanator/browser/configure.zcml
+include Products/humanator/configure.zcml
+include Products/humanator/content/configure.zcml
+include Products/humanator/form/configure.zcml
+include Products/humanator/version.txt
 recursive-include docs *
+recursive-include Products/humanator/profiles *
