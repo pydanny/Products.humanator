@@ -1,6 +1,12 @@
 Changelog
 =========
 
+0.6.1 - MANIFEST
+----------------------
+
+* Including zcml and profiles
+
+
 0.6 - Egg fixes
 ----------------------
 
