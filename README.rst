@@ -74,7 +74,7 @@ Installing with buildout
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you are using `buildout`_ to manage your instance installing
-collective.captcha is even simpler. You can install collective.captcha by
+Products.humanator is even simpler. You can install Products.humanator by
 adding it to the eggs line for your instance::
 
   [instance]
